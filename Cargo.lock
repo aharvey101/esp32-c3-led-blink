@@ -488,6 +488,7 @@ dependencies = [
  "critical-section",
  "esp-bootloader-esp-idf",
  "esp-hal",
+ "heapless",
 ]
 
 [[package]]
