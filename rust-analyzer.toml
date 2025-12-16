@@ -1,0 +1,59 @@
+[cargo]
+# Use the same target as specified in .cargo/config.toml
+target = "riscv32imc-unknown-none-elf"
+
+# Enable unstable features needed for embedded development
+[rustc]
+source = "discover"
+
+# Ensure rust-analyzer uses the correct build configuration
+[cargo.buildScripts]
+enable = true
+
+# Help rust-analyzer understand the cross-compilation setup
+[check]
+command = "check"
+targets = ["riscv32imc-unknown-none-elf"]
+allTargets = false
+
+# Improve performance for embedded projects
+[cargo.features]
+allFeatures = false
+
+# Configure diagnostics for embedded environment
+[diagnostics]
+enable = true
+enableExperimental = false
+
+# Configure for embedded/no_std environment
+[completion]
+callable = {
+    snippets = "add_parentheses"
+}
+
+[inlayHints]
+bindingModeHints = {
+    enable = false
+}
+closureReturnTypeHints = {
+    enable = "never"
+}
+lifetimeElisionHints = {
+    enable = "never"
+}
+parameterHints = {
+    enable = false
+}
+typeHints = {
+    enable = false
+}
+
+# Optimize for embedded development
+[procMacro]
+enable = true
+ignored = {}
+
+[rustfmt]
+rangeFormatting = {
+    enable = true
+}
